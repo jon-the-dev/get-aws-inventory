@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aws-inventory-scanner"
+version = "0.1.0"
+description = "A comprehensive AWS resource inventory scanner"
+readme = "README.md"
+license = "MIT"
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+maintainers = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Utilities",
+]
+keywords = ["aws", "inventory", "scanner", "cloud", "resources", "boto3"]
+requires-python = ">=3.8"
+dependencies = [
+    "boto3>=1.26.0",
+    "botocore>=1.29.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/aws-inventory-scanner"
+Documentation = "https://github.com/yourusername/aws-inventory-scanner#readme"
+Repository = "https://github.com/yourusername/aws-inventory-scanner"
+"Bug Reports" = "https://github.com/yourusername/aws-inventory-scanner/issues"
+
+[project.scripts]
+aws-inventory-scanner = "aws_inventory_scanner.scanner:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["aws_inventory_scanner*"]
+
+[tool.setuptools.package-data]
+aws_inventory_scanner = ["*.txt", "*.md"]
