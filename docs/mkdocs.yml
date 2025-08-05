@@ -1,8 +1,8 @@
-site_name: Repo Template
-site_description: A tempalte...what else?
-site_author: "Test Site"
-repo_name: zerodaysec/repo-template
-repo_url: http://github.com/mrc0der/test-code
+site_name: AWS Inventory Scanner
+site_description: A comprehensive AWS resource inventory scanner that discovers and catalogs AWS resources across all regions in your account.
+site_author: "AWS Inventory Scanner Team"
+repo_name: aws-inventory-scanner
+repo_url: https://github.com/yourusername/aws-inventory-scanner
 edit_uri: "edit/main/docs/"
 
 plugins:
@@ -26,8 +26,15 @@ theme:
 extra_css:
   - stylesheets/extra.css
 
-# nav:
-#   - Home: index.md
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Usage: usage.md
+  - Supported Services: services.md
+  - Output Format: output.md
+  - API Reference: api.md
+  - Examples: examples.md
+  - Troubleshooting: troubleshooting.md
 
 markdown_extensions:
   - admonition

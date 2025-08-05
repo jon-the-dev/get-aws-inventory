@@ -4,12 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-mkdocs = "*"
-mkdocs-material = "*"
-mkdocs-git-revision-date-localized-plugin = "*"
-mkdocs-video = "*"
-pymarkdownlnt = "*"
-invoke = "*"
 argparse = "*"
 requests = "*"
 ffmpeg = "*"
@@ -24,6 +18,13 @@ google-api-python-client = "*"
 pymongo = "*"
 tqdm = "*"
 weather2 = "*"
+mkdocs = "*"
+mkdocs-material = "*"
+mkdocs-git-revision-date-localized-plugin = "*"
+mkdocs-video = "*"
+pymarkdownlnt = "*"
+invoke = "*"
+watchdog = "*"
 
 [dev-packages]
 
