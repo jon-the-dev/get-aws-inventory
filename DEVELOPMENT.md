@@ -4,7 +4,7 @@
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/aws-inventory-scanner.git
+git clone https://github.com/jon-the-dev/aws-inventory-scanner.git
 cd aws-inventory-scanner
 ```
 
