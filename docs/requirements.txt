@@ -1,7 +1,0 @@
-mkdocs
-mkdocs-material
-mkdocs-git-revision-date-localized-plugin
-mkdocs-video
-pymarkdownlnt
-invoke
-watchdog
