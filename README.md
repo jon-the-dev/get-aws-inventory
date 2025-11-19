@@ -6,6 +6,7 @@ A comprehensive AWS resource inventory scanner that discovers and catalogs AWS r
 
 * **Multi-region scanning**: Scans all AWS regions by default, with option to specify specific regions
 * **Comprehensive coverage**: Supports 25+ AWS services including EC2, S3, RDS, Lambda, and more
+* **Tag analysis & reporting**: NEW! Extract and analyze tags from inventory data with compliance checking
 * **Concurrent processing**: Uses multithreading for fast, efficient scanning
 * **JSON output**: Saves detailed resource information in structured JSON format
 * **CLI interface**: Easy-to-use command-line interface with flexible options
@@ -49,12 +50,43 @@ aws-inventory-scanner --workers 50
 
 # Enable verbose logging
 aws-inventory-scanner --verbose
+
+# Generate tag analysis report from existing inventory
+aws-inventory-scanner --generate-tag-report
+
+# Check tag compliance with required tags
+aws-inventory-scanner --generate-tag-report \
+  --required-tags Name Environment Owner CostCenter
 ```
+
+### Tag Analysis
+
+After scanning your AWS resources, you can generate comprehensive tag reports:
+
+```bash
+# Generate tag analysis reports (summary, detailed, and CSV)
+aws-inventory-scanner --generate-tag-report
+
+# Check compliance with required tags
+aws-inventory-scanner --generate-tag-report \
+  --required-tags Environment Owner CostCenter
+
+# Analyze tags in specific directory
+aws-inventory-scanner --generate-tag-report --output-dir /path/to/inventory
+```
+
+The tag analyzer generates three types of reports:
+
+- **Summary Report**: Tag coverage statistics, most common tags, service breakdown
+- **Detailed Report**: Untagged resources, tag inconsistencies, resources by tag
+- **CSV Report**: All tags in spreadsheet format for analysis
+
+See the [Tag Analysis Documentation](docs/tag-analysis.md) for detailed usage.
 
 ### Python API
 
 ```python
-from aws_inventory_scanner import AWSInventoryScanner
+from aws_inventory_scanner import AWSInventoryScanner, TagAnalyzer
 
 # Create scanner instance
 scanner = AWSInventoryScanner(
@@ -65,6 +97,20 @@ scanner = AWSInventoryScanner(
 
 # Run the scan
 scanner.scan(profile_name='my-aws-profile')  # Optional: AWS profile
+
+# Analyze tags
+analyzer = TagAnalyzer(inventory_dir='./my-inventory')
+tags_data = analyzer.extract_tags_from_directory()
+report_files = analyzer.generate_tag_report(tags_data)
+
+# Check compliance
+required_tags = ['Environment', 'Owner', 'CostCenter']
+compliance = analyzer.generate_compliance_report(
+    tags_data,
+    required_tags,
+    output_file='compliance-report.json'
+)
+print(f"Tag compliance: {compliance['compliance_percentage']}%")
 ```
 
 ## Supported AWS Services
@@ -114,7 +160,27 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
+## Documentation
+
+- [Installation Guide](docs/installation.md)
+- [Usage Guide](docs/usage.md)
+- [Tag Analysis Documentation](docs/tag-analysis.md) - NEW!
+- [Supported Services](docs/services.md)
+- [Output Format](docs/output.md)
+- [API Reference](docs/api.md)
+- [Implementation Guide](IMPLEMENTATION_GUIDE.md) - Guide for adding new services
+
 ## Changelog
+
+### v0.2.0 (Planned)
+- **NEW**: Tag analysis and reporting feature
+  - Extract tags from all inventory files
+  - Generate summary, detailed, and CSV reports
+  - Tag compliance checking with required tags
+  - Tag inconsistency detection
+- **NEW**: Comprehensive guide for adding 50+ additional AWS services
+- Enhanced documentation with tag analysis guide
+- Added TagAnalyzer class to Python API
 
 ### v0.1.0
 - Initial release
