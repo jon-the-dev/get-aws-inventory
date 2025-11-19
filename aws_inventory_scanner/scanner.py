@@ -13,6 +13,8 @@ import boto3
 import botocore
 from botocore.client import Config
 
+from .tag_analyzer import TagAnalyzer
+
 
 class AWSInventoryScanner:
     """AWS Inventory Scanner class."""
@@ -383,20 +385,95 @@ def main():
         action="store_true",
         help="Enable verbose logging"
     )
-    
+    parser.add_argument(
+        "--generate-tag-report",
+        action="store_true",
+        help="Generate tag analysis report from existing inventory files"
+    )
+    parser.add_argument(
+        "--tag-report-format",
+        choices=["json", "csv", "both"],
+        default="both",
+        help="Tag report output format (default: both)"
+    )
+    parser.add_argument(
+        "--required-tags",
+        nargs="+",
+        help="List of required tag keys for compliance checking"
+    )
+
     args = parser.parse_args()
     
     # Set logging level
     if args.verbose:
         logging.getLogger().setLevel(logging.DEBUG)
-    
-    # Create scanner instance
+
+    # Handle tag report generation only
+    if args.generate_tag_report:
+        try:
+            analyzer = TagAnalyzer(inventory_dir=args.output_dir)
+            print(f"Analyzing tags in directory: {args.output_dir}")
+
+            # Extract tags from all inventory files
+            tags_data = analyzer.extract_tags_from_directory()
+
+            print(
+                f"Processed {tags_data['file_count']} files, "
+                f"found {len(tags_data['resources'])} resources"
+            )
+
+            # Generate reports
+            report_files = analyzer.generate_tag_report(
+                tags_data, output_dir=args.output_dir
+            )
+
+            print("\nTag reports generated:")
+            print(f"  Summary: {report_files['summary']}")
+            print(f"  Detailed: {report_files['detailed']}")
+            print(f"  CSV: {report_files['csv']}")
+
+            # Generate compliance report if required tags specified
+            if args.required_tags:
+                timestamp = dt.now().strftime("%Y%m%d_%H%M%S")
+                compliance_file = os.path.join(
+                    args.output_dir,
+                    f"tag-compliance-report-{timestamp}.json"
+                )
+                compliance_report = analyzer.generate_compliance_report(
+                    tags_data, args.required_tags, compliance_file
+                )
+
+                print(f"  Compliance: {compliance_file}")
+                print(
+                    f"\nTag Compliance: "
+                    f"{compliance_report['compliance_percentage']}% "
+                    f"({compliance_report['compliant_resources']}/"
+                    f"{compliance_report['total_resources']} resources)"
+                )
+
+            # Print errors if any
+            if tags_data['errors']:
+                print(f"\nWarnings: {len(tags_data['errors'])} errors occurred")
+                if args.verbose:
+                    for error in tags_data['errors'][:10]:
+                        print(f"  - {error}")
+
+        except Exception as e:
+            print(f"Error generating tag report: {e}")
+            if args.verbose:
+                import traceback
+                traceback.print_exc()
+            sys.exit(1)
+
+        return  # Exit after generating report
+
+    # Create scanner instance and run scan
     scanner = AWSInventoryScanner(
         regions=args.region,
         output_dir=args.output_dir,
         workers=args.workers
     )
-    
+
     try:
         scanner.scan(profile_name=args.profile)
     except KeyboardInterrupt:
