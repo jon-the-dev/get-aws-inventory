@@ -1,0 +1,104 @@
+/* Custom styles for AWS Inventory Scanner documentation */
+
+/* Code blocks */
+.highlight {
+    margin: 1em 0;
+}
+
+/* Tables */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Admonitions */
+.admonition {
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    border-left: 4px solid #ccc;
+}
+
+.admonition.note {
+    border-left-color: #2196F3;
+}
+
+.admonition.warning {
+    border-left-color: #FF9800;
+}
+
+.admonition.danger {
+    border-left-color: #F44336;
+}
+
+/* Service categories */
+.service-category {
+    margin: 2em 0;
+}
+
+.service-category h4 {
+    color: #1976D2;
+    border-bottom: 2px solid #1976D2;
+    padding-bottom: 0.5em;
+}
+
+/* API method lists */
+.api-methods {
+    background-color: #f8f9fa;
+    padding: 1em;
+    border-radius: 4px;
+    margin: 1em 0;
+}
+
+.api-methods code {
+    background-color: #e9ecef;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+}
+
+/* File structure examples */
+.file-structure {
+    font-family: 'Courier New', monospace;
+    background-color: #f8f9fa;
+    padding: 1em;
+    border-radius: 4px;
+    margin: 1em 0;
+    white-space: pre;
+}
+
+/* Command examples */
+.command-example {
+    background-color: #2d3748;
+    color: #e2e8f0;
+    padding: 1em;
+    border-radius: 4px;
+    margin: 1em 0;
+}
+
+.command-example code {
+    background-color: transparent;
+    color: inherit;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    table {
+        font-size: 0.9em;
+    }
+    
+    .api-methods {
+        padding: 0.5em;
+    }
+}

@@ -1,0 +1,2283 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A comprehensive AWS resource inventory scanner that discovers and catalogs AWS resources across all regions in your account.">
+      
+      
+        <meta name="author" content="AWS Inventory Scanner Team">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Complete Resource List - AWS Inventory Scanner</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#complete-resource-list" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AWS Inventory Scanner" class="md-header__button md-logo" aria-label="AWS Inventory Scanner" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AWS Inventory Scanner
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Complete Resource List
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yourusername/aws-inventory-scanner" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aws-inventory-scanner
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AWS Inventory Scanner" class="md-nav__button md-logo" aria-label="AWS Inventory Scanner" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AWS Inventory Scanner
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yourusername/aws-inventory-scanner" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aws-inventory-scanner
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Usage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tag-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tag Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Supported Services
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Output Format
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary Statistics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compute-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compute Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Compute Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-ec2-elastic-compute-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon EC2 (Elastic Compute Cloud)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Lambda
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-ecs-elastic-container-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon ECS (Elastic Container Service)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-eks-elastic-kubernetes-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon EKS (Elastic Kubernetes Service)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-elastic-beanstalk" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Elastic Beanstalk
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auto Scaling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-s3-simple-storage-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon S3 (Simple Storage Service)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-efs-elastic-file-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon EFS (Elastic File System)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-fsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon FSx
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-glacier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon Glacier
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-rds-relational-database-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon RDS (Relational Database Service)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-dynamodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon DynamoDB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-elasticache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon ElastiCache
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-redshift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon Redshift
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#networking-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Networking Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Networking Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elastic-load-balancing-elb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elastic Load Balancing (ELB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-cloudfront" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon CloudFront
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-route-53" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon Route 53
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#route-53-domains-global-us-east-1-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route 53 Domains (Global - US-East-1 only)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-iam-identity-and-access-management-global-us-east-1-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS IAM (Identity and Access Management) - Global (US-East-1 only)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-secrets-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Secrets Manager
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-guardduty" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon GuardDuty
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-waf-web-application-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS WAF (Web Application Firewall)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-network-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Network Firewall
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-key-management-service-kms" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Key Management Service (KMS)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#management-governance-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Management &amp; Governance Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Management &amp; Governance Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-cloudformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS CloudFormation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-cloudwatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon CloudWatch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Backup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-cloudtrail" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS CloudTrail
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#developer-tools-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Developer Tools Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Developer Tools Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-codebuild" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS CodeBuild
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-codedeploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS CodeDeploy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analytics-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analytics Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analytics Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-athena" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon Athena
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#machine-learning-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Machine Learning Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Machine Learning Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-sagemaker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon SageMaker
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application-integration-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Integration Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Application Integration Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-sns-simple-notification-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon SNS (Simple Notification Service)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-sqs-simple-queue-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon SQS (Simple Queue Service)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Container Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-ecr-elastic-container-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon ECR (Elastic Container Registry)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#certificate-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Certificate Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Certificate Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-certificate-manager-acm" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Certificate Manager (ACM)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-api-gateway-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon API Gateway v2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#systems-management-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Systems Management Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Systems Management Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-systems-manager-ssm" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Systems Manager (SSM)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workspace-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workspace Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workspace Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-workspaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon WorkSpaces
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#search-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Search Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Search Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-elasticsearch-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon Elasticsearch Service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resource-coverage-by-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Coverage by Service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resource Coverage by Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high-coverage-services-5-resource-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      High Coverage Services (5+ Resource Types)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medium-coverage-services-2-4-resource-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Medium Coverage Services (2-4 Resource Types)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-resource-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single Resource Services
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regional-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regional Distribution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Regional Distribution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-services-us-east-1-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global Services (US-East-1 Only)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regional-services-all-specified-regions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regional Services (All Specified Regions)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-output-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Output Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resource-identification-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Identification Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resource Identification Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-resource-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Resource Identifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Relationships
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/yourusername/aws-inventory-scanner/edit/main/docs/resource-list.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<div><h1 id="complete-resource-list">Complete Resource List<a class="headerlink" href="#complete-resource-list" title="Permanent link">¶</a></h1>
+<p>This document provides a comprehensive list of all AWS resources that the AWS Inventory Scanner can discover and catalog, organized by service category.</p>
+<h2 id="summary-statistics">Summary Statistics<a class="headerlink" href="#summary-statistics" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>Total Services Supported</strong>: 25+</li>
+<li><strong>Total Resource Types</strong>: 75+</li>
+<li><strong>Regional Services</strong>: 23</li>
+<li><strong>Global Services</strong>: 2 (IAM, Route53 Domains)</li>
+</ul>
+<h2 id="compute-resources">Compute Resources<a class="headerlink" href="#compute-resources" title="Permanent link">¶</a></h2>
+<h3 id="amazon-ec2-elastic-compute-cloud">Amazon EC2 (Elastic Compute Cloud)<a class="headerlink" href="#amazon-ec2-elastic-compute-cloud" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EC2 Instances</td>
+<td><code>describe_instances</code></td>
+<td><code>Reservations</code></td>
+<td>Virtual servers including running, stopped, and terminated instances</td>
+</tr>
+<tr>
+<td>Security Groups</td>
+<td><code>describe_security_groups</code></td>
+<td><code>SecurityGroups</code></td>
+<td>Virtual firewalls controlling inbound and outbound traffic</td>
+</tr>
+<tr>
+<td>VPCs</td>
+<td><code>describe_vpcs</code></td>
+<td><code>Vpcs</code></td>
+<td>Virtual Private Clouds and network configurations</td>
+</tr>
+<tr>
+<td>EBS Volumes</td>
+<td><code>describe_volumes</code></td>
+<td><code>Volumes</code></td>
+<td>Block storage volumes (attached and unattached)</td>
+</tr>
+<tr>
+<td>Subnets</td>
+<td><code>describe_subnets</code></td>
+<td><code>Subnets</code></td>
+<td>Network subnets within VPCs</td>
+</tr>
+<tr>
+<td>Network Interfaces</td>
+<td><code>describe_network_interfaces</code></td>
+<td><code>NetworkInterfaces</code></td>
+<td>Elastic Network Interfaces (ENIs)</td>
+</tr>
+<tr>
+<td>Elastic IPs</td>
+<td><code>describe_addresses</code></td>
+<td><code>Addresses</code></td>
+<td>Static IP addresses</td>
+</tr>
+</tbody>
+</table>
+<h3 id="aws-lambda">AWS Lambda<a class="headerlink" href="#aws-lambda" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Functions</td>
+<td><code>list_functions</code></td>
+<td><code>Functions</code></td>
+<td>Serverless functions with configurations and runtime information</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amazon-ecs-elastic-container-service">Amazon ECS (Elastic Container Service)<a class="headerlink" href="#amazon-ecs-elastic-container-service" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clusters</td>
+<td><code>list_clusters</code></td>
+<td><code>ClusterArns</code></td>
+<td>Container orchestration clusters</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amazon-eks-elastic-kubernetes-service">Amazon EKS (Elastic Kubernetes Service)<a class="headerlink" href="#amazon-eks-elastic-kubernetes-service" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clusters</td>
+<td><code>list_clusters</code></td>
+<td><code>Clusters</code></td>
+<td>Managed Kubernetes clusters</td>
+</tr>
+</tbody>
+</table>
+<h3 id="aws-elastic-beanstalk">AWS Elastic Beanstalk<a class="headerlink" href="#aws-elastic-beanstalk" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Environments</td>
+<td><code>describe_environments</code></td>
+<td><code>Environments</code></td>
+<td>Application deployment environments</td>
+</tr>
+</tbody>
+</table>
+<h3 id="auto-scaling">Auto Scaling<a class="headerlink" href="#auto-scaling" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Auto Scaling Groups</td>
+<td><code>describe_auto_scaling_groups</code></td>
+<td><code>AutoScalingGroups</code></td>
+<td>EC2 auto scaling configurations</td>
+</tr>
+<tr>
+<td>Launch Configurations</td>
+<td><code>describe_launch_configurations</code></td>
+<td><code>LaunchConfigurations</code></td>
+<td>Instance launch templates</td>
+</tr>
+<tr>
+<td>Auto Scaling Instances</td>
+<td><code>describe_auto_scaling_instances</code></td>
+<td><code>AutoScalingInstances</code></td>
+<td>Instances managed by auto scaling</td>
+</tr>
+</tbody>
+</table>
+<h2 id="storage-resources">Storage Resources<a class="headerlink" href="#storage-resources" title="Permanent link">¶</a></h2>
+<h3 id="amazon-s3-simple-storage-service">Amazon S3 (Simple Storage Service)<a class="headerlink" href="#amazon-s3-simple-storage-service" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Buckets</td>
+<td><code>list_buckets</code></td>
+<td><code>Buckets</code></td>
+<td>Object storage buckets</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amazon-efs-elastic-file-system">Amazon EFS (Elastic File System)<a class="headerlink" href="#amazon-efs-elastic-file-system" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>File Systems</td>
+<td><code>describe_file_systems</code></td>
+<td><code>FileSystems</code></td>
+<td>Network-attached file systems</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amazon-fsx">Amazon FSx<a class="headerlink" href="#amazon-fsx" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>File Systems</td>
+<td><code>describe_file_systems</code></td>
+<td><code>FileSystems</code></td>
+<td>High-performance file systems (Windows, Lustre, NetApp, OpenZFS)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amazon-glacier">Amazon Glacier<a class="headerlink" href="#amazon-glacier" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vaults</td>
+<td><code>list_vaults</code></td>
+<td><code>VaultList</code></td>
+<td>Long-term archival storage vaults</td>
+</tr>
+</tbody>
+</table>
+<h2 id="database-resources">Database Resources<a class="headerlink" href="#database-resources" title="Permanent link">¶</a></h2>
+<h3 id="amazon-rds-relational-database-service">Amazon RDS (Relational Database Service)<a class="headerlink" href="#amazon-rds-relational-database-service" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DB Instances</td>
+<td><code>describe_db_instances</code></td>
+<td><code>DBInstances</code></td>
+<td>Relational database instances (MySQL, PostgreSQL, Oracle, SQL Server, etc.)</td>
+</tr>
+<tr>
+<td>DB Snapshots</td>
+<td><code>describe_db_snapshots</code></td>
+<td><code>DBSnapshots</code></td>
+<td>Database backups and snapshots</td>
+</tr>
+<tr>
+<td>DB Subnet Groups</td>
+<td><code>describe_db_subnet_groups</code></td>
+<td><code>DBSubnetGroups</code></td>
+<td>Network configurations for databases</td>
+</tr>
+<tr>
+<td>DB Clusters</td>
+<td><code>describe_db_clusters</code></td>
+<td><code>DBClusters</code></td>
+<td>Aurora clusters and configurations</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amazon-dynamodb">Amazon DynamoDB<a class="headerlink" href="#amazon-dynamodb" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tables</td>
+<td><code>list_tables</code></td>
+<td><code>TableNames</code></td>
+<td>NoSQL database tables</td>
+</tr>
+<tr>
+<td>Backups</td>
+<td><code>list_backups</code></td>
+<td><code>BackupSummaries</code></td>
+<td>Point-in-time recovery and on-demand backups</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amazon-elasticache">Amazon ElastiCache<a class="headerlink" href="#amazon-elasticache" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cache Clusters</td>
+<td><code>describe_cache_clusters</code></td>
+<td><code>CacheClusters</code></td>
+<td>Redis and Memcached clusters</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amazon-redshift">Amazon Redshift<a class="headerlink" href="#amazon-redshift" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clusters</td>
+<td><code>describe_clusters</code></td>
+<td><code>Clusters</code></td>
+<td>Data warehouse clusters</td>
+</tr>
+</tbody>
+</table>
+<h2 id="networking-resources">Networking Resources<a class="headerlink" href="#networking-resources" title="Permanent link">¶</a></h2>
+<h3 id="elastic-load-balancing-elb">Elastic Load Balancing (ELB)<a class="headerlink" href="#elastic-load-balancing-elb" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Load Balancers</td>
+<td><code>describe_load_balancers</code></td>
+<td><code>LoadBalancerDescriptions</code></td>
+<td>Classic, Application, and Network Load Balancers</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amazon-cloudfront">Amazon CloudFront<a class="headerlink" href="#amazon-cloudfront" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Distributions</td>
+<td><code>list_distributions</code></td>
+<td><code>DistributionList</code></td>
+<td>CDN distributions and configurations</td>
+</tr>
+<tr>
+<td>Origin Access Identities</td>
+<td><code>list_cloud_front_origin_access_identities</code></td>
+<td><code>CloudFrontOriginAccessIdentityList</code></td>
+<td>S3 bucket access controls</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amazon-route-53">Amazon Route 53<a class="headerlink" href="#amazon-route-53" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hosted Zones</td>
+<td><code>list_hosted_zones</code></td>
+<td><code>HostedZones</code></td>
+<td>DNS hosted zones</td>
+</tr>
+</tbody>
+</table>
+<h3 id="route-53-domains-global-us-east-1-only">Route 53 Domains (Global - US-East-1 only)<a class="headerlink" href="#route-53-domains-global-us-east-1-only" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Domains</td>
+<td><code>list_domains</code></td>
+<td><code>Domains</code></td>
+<td>Registered domain names</td>
+</tr>
+</tbody>
+</table>
+<h2 id="security-resources">Security Resources<a class="headerlink" href="#security-resources" title="Permanent link">¶</a></h2>
+<h3 id="aws-iam-identity-and-access-management-global-us-east-1-only">AWS IAM (Identity and Access Management) - Global (US-East-1 only)<a class="headerlink" href="#aws-iam-identity-and-access-management-global-us-east-1-only" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Users</td>
+<td><code>list_users</code></td>
+<td><code>Users</code></td>
+<td>IAM users and their configurations</td>
+</tr>
+<tr>
+<td>Roles</td>
+<td><code>list_roles</code></td>
+<td><code>Roles</code></td>
+<td>IAM roles and trust policies</td>
+</tr>
+<tr>
+<td>Groups</td>
+<td><code>list_groups</code></td>
+<td><code>Groups</code></td>
+<td>IAM groups and their members</td>
+</tr>
+</tbody>
+</table>
+<h3 id="aws-secrets-manager">AWS Secrets Manager<a class="headerlink" href="#aws-secrets-manager" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Secrets</td>
+<td><code>list_secrets</code></td>
+<td><code>SecretList</code></td>
+<td>Stored secrets and their metadata</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amazon-guardduty">Amazon GuardDuty<a class="headerlink" href="#amazon-guardduty" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Detectors</td>
+<td><code>list_detectors</code></td>
+<td><code>DetectorIds</code></td>
+<td>Threat detection service configurations</td>
+</tr>
+</tbody>
+</table>
+<h3 id="aws-waf-web-application-firewall">AWS WAF (Web Application Firewall)<a class="headerlink" href="#aws-waf-web-application-firewall" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Web ACLs</td>
+<td><code>list_web_acls</code></td>
+<td><code>WebACLs</code></td>
+<td>Web application firewall rules</td>
+</tr>
+</tbody>
+</table>
+<h3 id="aws-network-firewall">AWS Network Firewall<a class="headerlink" href="#aws-network-firewall" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Firewalls</td>
+<td><code>list_firewalls</code></td>
+<td><code>Firewalls</code></td>
+<td>Network firewall configurations</td>
+</tr>
+</tbody>
+</table>
+<h3 id="aws-key-management-service-kms">AWS Key Management Service (KMS)<a class="headerlink" href="#aws-key-management-service-kms" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keys</td>
+<td><code>list_keys</code></td>
+<td><code>Keys</code></td>
+<td>Customer and AWS managed encryption keys</td>
+</tr>
+</tbody>
+</table>
+<h2 id="management-governance-resources">Management &amp; Governance Resources<a class="headerlink" href="#management-governance-resources" title="Permanent link">¶</a></h2>
+<h3 id="aws-cloudformation">AWS CloudFormation<a class="headerlink" href="#aws-cloudformation" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stacks</td>
+<td><code>describe_stacks</code></td>
+<td><code>Stacks</code></td>
+<td>Infrastructure as code stacks</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amazon-cloudwatch">Amazon CloudWatch<a class="headerlink" href="#amazon-cloudwatch" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alarms</td>
+<td><code>describe_alarms</code></td>
+<td><code>MetricAlarms</code></td>
+<td>Metric alarms and monitoring configurations</td>
+</tr>
+</tbody>
+</table>
+<h3 id="aws-config">AWS Config<a class="headerlink" href="#aws-config" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Configuration Rules</td>
+<td><code>describe_config_rules</code></td>
+<td><code>ConfigRules</code></td>
+<td>Compliance rules</td>
+</tr>
+<tr>
+<td>Configuration Aggregators</td>
+<td><code>describe_configuration_aggregators</code></td>
+<td><code>ConfigurationAggregators</code></td>
+<td>Multi-account/region aggregation</td>
+</tr>
+<tr>
+<td>Resource Evaluations</td>
+<td><code>list_resource_evaluations</code></td>
+<td><code>ResourceEvaluations</code></td>
+<td>Compliance evaluation results</td>
+</tr>
+<tr>
+<td>Configuration Recorders</td>
+<td><code>describe_configuration_recorders</code></td>
+<td><code>ConfigurationRecorders</code></td>
+<td>Resource change tracking</td>
+</tr>
+</tbody>
+</table>
+<h3 id="aws-backup">AWS Backup<a class="headerlink" href="#aws-backup" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backup Plans</td>
+<td><code>list_backup_plans</code></td>
+<td><code>BackupPlansList</code></td>
+<td>Backup scheduling and retention policies</td>
+</tr>
+<tr>
+<td>Backup Vaults</td>
+<td><code>list_backup_vaults</code></td>
+<td><code>BackupVaultList</code></td>
+<td>Backup storage locations</td>
+</tr>
+<tr>
+<td>Backup Jobs</td>
+<td><code>list_backup_jobs</code></td>
+<td><code>BackupJobs</code></td>
+<td>Active and completed backup operations</td>
+</tr>
+</tbody>
+</table>
+<h3 id="aws-cloudtrail">AWS CloudTrail<a class="headerlink" href="#aws-cloudtrail" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trails</td>
+<td><code>describe_trails</code></td>
+<td><code>trailList</code></td>
+<td>API logging configurations</td>
+</tr>
+</tbody>
+</table>
+<h2 id="developer-tools-resources">Developer Tools Resources<a class="headerlink" href="#developer-tools-resources" title="Permanent link">¶</a></h2>
+<h3 id="aws-codebuild">AWS CodeBuild<a class="headerlink" href="#aws-codebuild" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Projects</td>
+<td><code>list_projects</code></td>
+<td><code>Projects</code></td>
+<td>Build projects and configurations</td>
+</tr>
+</tbody>
+</table>
+<h3 id="aws-codedeploy">AWS CodeDeploy<a class="headerlink" href="#aws-codedeploy" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Applications</td>
+<td><code>list_applications</code></td>
+<td><code>Applications</code></td>
+<td>Deployment applications</td>
+</tr>
+<tr>
+<td>Deployments</td>
+<td><code>list_deployments</code></td>
+<td><code>Deployments</code></td>
+<td>Deployment history and status</td>
+</tr>
+</tbody>
+</table>
+<h2 id="analytics-resources">Analytics Resources<a class="headerlink" href="#analytics-resources" title="Permanent link">¶</a></h2>
+<h3 id="amazon-athena">Amazon Athena<a class="headerlink" href="#amazon-athena" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data Catalogs</td>
+<td><code>list_data_catalogs</code></td>
+<td><code>DataCatalogsSummary</code></td>
+<td>Metadata catalogs for querying</td>
+</tr>
+</tbody>
+</table>
+<h2 id="machine-learning-resources">Machine Learning Resources<a class="headerlink" href="#machine-learning-resources" title="Permanent link">¶</a></h2>
+<h3 id="amazon-sagemaker">Amazon SageMaker<a class="headerlink" href="#amazon-sagemaker" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clusters</td>
+<td><code>list_clusters</code></td>
+<td><code>ClusterSummaries</code></td>
+<td>SageMaker compute clusters</td>
+</tr>
+<tr>
+<td>Endpoints</td>
+<td><code>list_endpoints</code></td>
+<td><code>Endpoints</code></td>
+<td>Model serving endpoints</td>
+</tr>
+<tr>
+<td>Notebook Instances</td>
+<td><code>list_notebook_instances</code></td>
+<td><code>NotebookInstances</code></td>
+<td>Jupyter notebook environments</td>
+</tr>
+</tbody>
+</table>
+<h2 id="application-integration-resources">Application Integration Resources<a class="headerlink" href="#application-integration-resources" title="Permanent link">¶</a></h2>
+<h3 id="amazon-sns-simple-notification-service">Amazon SNS (Simple Notification Service)<a class="headerlink" href="#amazon-sns-simple-notification-service" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Topics</td>
+<td><code>list_topics</code></td>
+<td><code>Topics</code></td>
+<td>Notification topics and configurations</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amazon-sqs-simple-queue-service">Amazon SQS (Simple Queue Service)<a class="headerlink" href="#amazon-sqs-simple-queue-service" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Queues</td>
+<td><code>list_queues</code></td>
+<td><code>QueueUrls</code></td>
+<td>Message queues and configurations</td>
+</tr>
+</tbody>
+</table>
+<h2 id="container-resources">Container Resources<a class="headerlink" href="#container-resources" title="Permanent link">¶</a></h2>
+<h3 id="amazon-ecr-elastic-container-registry">Amazon ECR (Elastic Container Registry)<a class="headerlink" href="#amazon-ecr-elastic-container-registry" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repositories</td>
+<td><code>describe_repositories</code></td>
+<td><code>Repositories</code></td>
+<td>Container image repositories</td>
+</tr>
+</tbody>
+</table>
+<h2 id="certificate-resources">Certificate Resources<a class="headerlink" href="#certificate-resources" title="Permanent link">¶</a></h2>
+<h3 id="aws-certificate-manager-acm">AWS Certificate Manager (ACM)<a class="headerlink" href="#aws-certificate-manager-acm" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Certificates</td>
+<td><code>list_certificates</code></td>
+<td><code>CertificateSummaryList</code></td>
+<td>SSL/TLS certificates</td>
+</tr>
+</tbody>
+</table>
+<h2 id="api-resources">API Resources<a class="headerlink" href="#api-resources" title="Permanent link">¶</a></h2>
+<h3 id="amazon-api-gateway-v2">Amazon API Gateway v2<a class="headerlink" href="#amazon-api-gateway-v2" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APIs</td>
+<td><code>get_apis</code></td>
+<td><code>Items</code></td>
+<td>REST and WebSocket APIs</td>
+</tr>
+</tbody>
+</table>
+<h2 id="systems-management-resources">Systems Management Resources<a class="headerlink" href="#systems-management-resources" title="Permanent link">¶</a></h2>
+<h3 id="aws-systems-manager-ssm">AWS Systems Manager (SSM)<a class="headerlink" href="#aws-systems-manager-ssm" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parameters</td>
+<td><code>get_parameters_by_path</code></td>
+<td><code>Parameters</code></td>
+<td>Parameter Store values and configurations</td>
+</tr>
+</tbody>
+</table>
+<h2 id="workspace-resources">Workspace Resources<a class="headerlink" href="#workspace-resources" title="Permanent link">¶</a></h2>
+<h3 id="amazon-workspaces">Amazon WorkSpaces<a class="headerlink" href="#amazon-workspaces" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WorkSpaces</td>
+<td><code>describe_workspaces</code></td>
+<td><code>Workspaces</code></td>
+<td>Virtual desktop instances</td>
+</tr>
+</tbody>
+</table>
+<h2 id="search-resources">Search Resources<a class="headerlink" href="#search-resources" title="Permanent link">¶</a></h2>
+<h3 id="amazon-elasticsearch-service">Amazon Elasticsearch Service<a class="headerlink" href="#amazon-elasticsearch-service" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>API Method</th>
+<th>Response Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reserved Instances</td>
+<td><code>describe_reserved_elasticsearch_instances</code></td>
+<td><code>ReservedElasticsearchInstances</code></td>
+<td>Reserved Elasticsearch capacity</td>
+</tr>
+</tbody>
+</table>
+<h2 id="resource-coverage-by-service">Resource Coverage by Service<a class="headerlink" href="#resource-coverage-by-service" title="Permanent link">¶</a></h2>
+<h3 id="high-coverage-services-5-resource-types">High Coverage Services (5+ Resource Types)<a class="headerlink" href="#high-coverage-services-5-resource-types" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Amazon EC2</strong>: 7 resource types (Instances, Security Groups, VPCs, Volumes, Subnets, Network Interfaces, Elastic IPs)</li>
+<li><strong>Amazon RDS</strong>: 4 resource types (DB Instances, Snapshots, Subnet Groups, Clusters)</li>
+<li><strong>AWS IAM</strong>: 3 resource types (Users, Roles, Groups)</li>
+<li><strong>Auto Scaling</strong>: 3 resource types (Groups, Launch Configurations, Instances)</li>
+<li><strong>AWS Config</strong>: 4 resource types (Rules, Aggregators, Evaluations, Recorders)</li>
+<li><strong>AWS Backup</strong>: 3 resource types (Plans, Vaults, Jobs)</li>
+<li><strong>Amazon SageMaker</strong>: 3 resource types (Clusters, Endpoints, Notebook Instances)</li>
+</ul>
+<h3 id="medium-coverage-services-2-4-resource-types">Medium Coverage Services (2-4 Resource Types)<a class="headerlink" href="#medium-coverage-services-2-4-resource-types" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Amazon CloudFront</strong>: 2 resource types</li>
+<li><strong>AWS CodeDeploy</strong>: 2 resource types</li>
+<li><strong>Amazon DynamoDB</strong>: 2 resource types</li>
+</ul>
+<h3 id="single-resource-services">Single Resource Services<a class="headerlink" href="#single-resource-services" title="Permanent link">¶</a></h3>
+<p>Most services provide 1 primary resource type, focusing on their core functionality.</p>
+<h2 id="regional-distribution">Regional Distribution<a class="headerlink" href="#regional-distribution" title="Permanent link">¶</a></h2>
+<h3 id="global-services-us-east-1-only">Global Services (US-East-1 Only)<a class="headerlink" href="#global-services-us-east-1-only" title="Permanent link">¶</a></h3>
+<ul>
+<li>AWS IAM (Users, Roles, Groups)</li>
+<li>Route 53 Domains</li>
+</ul>
+<h3 id="regional-services-all-specified-regions">Regional Services (All Specified Regions)<a class="headerlink" href="#regional-services-all-specified-regions" title="Permanent link">¶</a></h3>
+<p>All other services are scanned across all specified regions, allowing for:
+- Multi-region resource discovery
+- Regional compliance checking
+- Disaster recovery planning
+- Cost optimization across regions</p>
+<h2 id="file-output-summary">File Output Summary<a class="headerlink" href="#file-output-summary" title="Permanent link">¶</a></h2>
+<p>The scanner generates approximately <strong>75+ JSON files per region</strong> (depending on resource availability), with the naming convention:
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>{account_id}-{service}-{region}-{api_method}-{response_key}.json
+</code></pre></div>
+<p>For a full account scan across all regions (~20 regions), this results in approximately <strong>1,500+ JSON files</strong> containing comprehensive resource inventory data.</p>
+<h2 id="resource-identification-patterns">Resource Identification Patterns<a class="headerlink" href="#resource-identification-patterns" title="Permanent link">¶</a></h2>
+<h3 id="common-resource-identifiers">Common Resource Identifiers<a class="headerlink" href="#common-resource-identifiers" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>EC2 Instances</strong>: <code>InstanceId</code> (i-1234567890abcdef0)</li>
+<li><strong>S3 Buckets</strong>: <code>Name</code> (bucket-name)</li>
+<li><strong>RDS Instances</strong>: <code>DBInstanceIdentifier</code> (mydb-instance)</li>
+<li><strong>Lambda Functions</strong>: <code>FunctionName</code> (my-function)</li>
+<li><strong>IAM Users</strong>: <code>UserName</code> (username)</li>
+<li><strong>VPCs</strong>: <code>VpcId</code> (vpc-12345678)</li>
+<li><strong>Security Groups</strong>: <code>GroupId</code> (sg-12345678)</li>
+</ul>
+<h3 id="resource-relationships">Resource Relationships<a class="headerlink" href="#resource-relationships" title="Permanent link">¶</a></h3>
+<p>The scanner captures resource relationships through:
+- <strong>VPC associations</strong> (instances → subnets → VPCs)
+- <strong>Security group attachments</strong> (instances → security groups)
+- <strong>Volume attachments</strong> (instances → EBS volumes)
+- <strong>Load balancer targets</strong> (load balancers → instances)
+- <strong>IAM role assignments</strong> (services → IAM roles)</p>
+<p>This comprehensive resource discovery enables detailed analysis of your AWS infrastructure, security posture, and cost optimization opportunities.</p></div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 17, 2026 01:21:29 UTC">February 17, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["search.highlight", "search.share", "content.code.annotate", "navigation.top", "content.action.edit"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
