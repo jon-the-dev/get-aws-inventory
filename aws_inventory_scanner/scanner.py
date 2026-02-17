@@ -91,6 +91,16 @@ class AWSInventoryScanner:
                 ("describe_volumes", "Volumes"),
                 ("describe_subnets", "Subnets"),
                 ("describe_network_interfaces", "NetworkInterfaces"),
+                ("describe_vpc_endpoints", "VpcEndpoints"),
+                ("describe_nat_gateways", "NatGateways"),
+                ("describe_internet_gateways", "InternetGateways"),
+                ("describe_route_tables", "RouteTables"),
+                ("describe_vpc_peering_connections", "VpcPeeringConnections"),
+                ("describe_transit_gateways", "TransitGateways"),
+                ("describe_transit_gateway_attachments", "TransitGatewayAttachments"),
+                ("describe_network_acls", "NetworkAcls"),
+                ("describe_snapshots", "Snapshots"),
+                ("describe_images", "Images"),
             ],
             "ecr": [
                 ("describe_repositories", "Repositories"),
@@ -103,6 +113,8 @@ class AWSInventoryScanner:
             ],
             "elasticache": [
                 ("describe_cache_clusters", "CacheClusters"),
+                ("describe_replication_groups", "ReplicationGroups"),
+                ("describe_cache_parameter_groups", "CacheParameterGroups"),
             ],
             "elasticbeanstalk": [("describe_environments", "Environments")],
             "elb": [
@@ -114,12 +126,19 @@ class AWSInventoryScanner:
                     "ReservedElasticsearchInstances",
                 ),
             ],
-            "lambda": [("list_functions", "Functions")],
+            "lambda": [
+                ("list_functions", "Functions"),
+                ("list_layers", "Layers"),
+                ("list_event_source_mappings", "EventSourceMappings"),
+            ],
             "rds": [
                 ("describe_db_instances", "DBInstances"),
                 ("describe_db_snapshots", "DBSnapshots"),
                 ("describe_db_subnet_groups", "DBSubnetGroups"),
                 ("describe_db_clusters", "DBClusters"),
+                ("describe_db_proxies", "DBProxies"),
+                ("describe_db_parameter_groups", "DBParameterGroups"),
+                ("describe_event_subscriptions", "EventSubscriptionsList"),
             ],
             "s3": [
                 ("list_buckets", "Buckets"),
@@ -129,6 +148,29 @@ class AWSInventoryScanner:
                 ("list_clusters", "ClusterSummaries"),
                 ("list_endpoints", "Endpoints"),
                 ("list_notebook_instances", "NotebookInstances"),
+            ],
+            # AI/ML Services (paginated only)
+            "rekognition": [
+                ("list_collections", "CollectionIds"),
+                ("list_stream_processors", "StreamProcessors"),
+            ],
+            "comprehend": [
+                ("list_document_classifiers", "DocumentClassifierPropertiesList"),
+                ("list_entities_detection_jobs", "EntitiesDetectionJobPropertiesList"),
+            ],
+            "polly": [
+                ("list_lexicons", "Lexicons"),
+            ],
+            "textract": [
+                ("list_adapters", "Adapters"),
+            ],
+            "forecast": [
+                ("list_datasets", "Datasets"),
+                ("list_predictors", "Predictors"),
+            ],
+            "personalize": [
+                ("list_datasets", "datasets"),
+                ("list_solutions", "solutions"),
             ],
             "sns": [("list_topics", "Topics")],
             "sqs": [("list_queues", "QueueUrls")],
@@ -152,18 +194,160 @@ class AWSInventoryScanner:
                 ("describe_clusters", "Clusters"),
             ],
             "network-firewall": [("list_firewalls", "Firewalls")],
+            # Networking services
+            "elbv2": [
+                ("describe_load_balancers", "LoadBalancers"),
+                ("describe_target_groups", "TargetGroups"),
+            ],
+            "globalaccelerator": [
+                ("list_accelerators", "Accelerators"),
+            ],
+            # Security services
+            "securityhub": [
+                ("list_members", "Members"),
+                ("describe_standards", "Standards"),
+            ],
+            "accessanalyzer": [
+                ("list_analyzers", "analyzers"),
+            ],
+            "inspector2": [
+                ("list_findings", "findings"),
+            ],
+            "macie2": [
+                ("list_classification_jobs", "items"),
+            ],
+            "ram": [
+                ("get_resource_shares", "resourceShares"),
+            ],
+            "cognito-idp": [
+                ("list_user_pools", "UserPools"),
+            ],
+            "cognito-identity": [
+                ("list_identity_pools", "IdentityPools"),
+            ],
+            "acm-pca": [
+                ("list_certificate_authorities", "CertificateAuthorities"),
+            ],
+            # Database services
+            "docdb": [
+                ("describe_db_clusters", "DBClusters"),
+                ("describe_db_instances", "DBInstances"),
+            ],
+            "neptune": [
+                ("describe_db_clusters", "DBClusters"),
+                ("describe_db_instances", "DBInstances"),
+            ],
+            "timestream-query": [
+                ("list_scheduled_queries", "ScheduledQueries"),
+            ],
+            # Analytics services
+            "emr": [
+                ("list_clusters", "Clusters"),
+                ("list_studios", "Studios"),
+            ],
+            "kinesis": [
+                ("list_streams", "StreamNames"),
+            ],
+            "kinesisanalyticsv2": [
+                ("list_applications", "ApplicationSummaries"),
+            ],
+            "kafka": [
+                ("list_clusters_v2", "ClusterInfoList"),
+            ],
+            "glue": [
+                ("get_databases", "DatabaseList"),
+                ("get_crawlers", "Crawlers"),
+            ],
+            "datapipeline": [
+                ("list_pipelines", "pipelineIdList"),
+            ],
+            # Application Integration
+            "events": [
+                ("list_rules", "Rules"),
+            ],
+            "stepfunctions": [
+                ("list_state_machines", "stateMachines"),
+                ("list_activities", "activities"),
+            ],
+            "appsync": [
+                ("list_graphql_apis", "graphqlApis"),
+            ],
+            "mq": [
+                ("list_brokers", "BrokerSummaries"),
+            ],
+            "apigateway": [
+                ("get_rest_apis", "items"),
+                ("get_domain_names", "items"),
+            ],
+            # Management & Governance
+            "logs": [
+                ("describe_log_groups", "logGroups"),
+            ],
+            "organizations": [
+                ("list_accounts", "Accounts"),
+            ],
+            "servicecatalog": [
+                ("list_portfolios", "PortfolioDetails"),
+            ],
+            "resource-groups": [
+                ("list_groups", "GroupIdentifiers"),
+            ],
+            "application-autoscaling": [
+                ("describe_scalable_targets", "ScalableTargets"),
+            ],
+            # Developer Tools
+            "codepipeline": [
+                ("list_pipelines", "pipelines"),
+                ("list_webhooks", "webhooks"),
+            ],
+            "codecommit": [
+                ("list_repositories", "repositories"),
+            ],
+            "codeartifact": [
+                ("list_repositories", "repositories"),
+                ("list_domains", "domains"),
+            ],
+            "xray": [
+                ("get_groups", "Groups"),
+            ],
+            # Storage
+            "storagegateway": [
+                ("list_gateways", "Gateways"),
+            ],
+            "transfer": [
+                ("list_servers", "Servers"),
+            ],
+            # Compute
+            "batch": [
+                ("describe_job_queues", "jobQueues"),
+                ("describe_compute_environments", "computeEnvironments"),
+            ],
+            "lightsail": [
+                ("get_instances", "instances"),
+            ],
         }
         
         self.non_paginated_services = {
             "apigatewayv2": ("get_apis", "Items"),
-            "config": ("describe_configuration_recorders", "ConfigurationRecorders"),
-            "ec2": ("describe_addresses", "Addresses"),
-            "secretsmanager": ("list_secrets", "SecretList"),
-            "ssm": ("get_parameters_by_path", "Parameters"),
             "kms": ("list_keys", "Keys"),
             "cloudtrail": ("describe_trails", "trailList"),
             "codebuild": ("list_projects", "Projects"),
             "waf": ("list_web_acls", "WebACLs"),
+            "ssm": ("get_parameters_by_path", "Parameters"),
+            # AI/ML non-paginated
+            "bedrock": ("list_foundation_models", "modelSummaries"),
+            "bedrock-agent": ("list_agents", "agentSummaries"),
+            "translate": ("list_terminologies", "TerminologyPropertiesList"),
+            "transcribe": ("list_transcription_jobs", "TranscriptionJobSummaries"),
+            "lexv2-models": ("list_bots", "botSummaries"),
+            "kendra": ("list_indices", "IndexConfigurationSummaryItems"),
+            # Additional services
+            "iot": ("list_things", "things"),
+            "gamelift": ("list_fleets", "FleetIds"),
+            "firehose": ("list_delivery_streams", "DeliveryStreamNames"),
+            "sesv2": ("list_email_identities", "EmailIdentities"),
+            "apprunner": ("list_services", "ServiceSummaryList"),
+            "timestream-write": ("list_databases", "Databases"),
         }
 
     def get_all_regions(self, cred_data):

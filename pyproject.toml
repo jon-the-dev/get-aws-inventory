@@ -35,6 +35,12 @@ dependencies = [
     "botocore>=1.29.0",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+]
+
 [project.urls]
 Homepage = "https://github.com/yourusername/aws-inventory-scanner"
 Documentation = "https://github.com/yourusername/aws-inventory-scanner#readme"
