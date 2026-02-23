@@ -19,12 +19,12 @@
     "develop": {
         "boto3": {
             "hashes": [
-                "sha256:3bd32f3508a6e9851671d0ef3b1f9e8ee7e8c095aa0488bcd9e86074aef5b7eb",
-                "sha256:56bc79388763995852b6d3fe48023e661e63fc2e60a921273c422d0171b9fbfb"
+                "sha256:71194e855bfc81a21872cbe29c41f52ffdbe67e0a184a52c13346ef00b328939",
+                "sha256:fe3d8ec586c39a0c96327fd317c77ca601ec5f991e9ba7211cacae8db4c07a73"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.9'",
-            "version": "==1.42.53"
+            "version": "==1.42.54"
         },
         "botocore": {
             "hashes": [
