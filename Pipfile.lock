@@ -28,12 +28,12 @@
         },
         "botocore": {
             "hashes": [
-                "sha256:eac6da0fffccf87888ebf4d89f0b2378218a707efa748cd955b838995e944695",
-                "sha256:ec0769eb0f7c5034856bb406a92698dbc02a3d4be0f78a384747106b161d8ea3"
+                "sha256:1a95c90fa9ca6ee85c1a02b04c8e05e948661d201b85b443000d676857905019",
+                "sha256:f1897d3254965cacac7514cfed1b6ff016166b165ee2e06232b4a3954cf9d713"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.10'",
-            "version": "==1.43.3"
+            "version": "==1.43.4"
         },
         "coverage": {
             "extras": [
