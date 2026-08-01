@@ -31,7 +31,7 @@ repos:
 
   # Terraform Checks
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.108.0 # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
+    rev: v1.108.1 # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
     hooks:
       - id: terraform_fmt
         args:
