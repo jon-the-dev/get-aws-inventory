@@ -19,21 +19,21 @@
     "develop": {
         "boto3": {
             "hashes": [
-                "sha256:12871fb50c383f1b9aa4ed6dd386ba689062baef730552e79d5a9cd782b53058",
-                "sha256:ce1a20cbcfaa1d0b3c8f568e2b6c7fbd34b842ea00e729d49a4b4de522828db9"
+                "sha256:6413d6e99f716af5d333a732db140e4b3359cac005a1271b11777b6d9ca82194",
+                "sha256:73a3564f737d4516625964eee709a498fa98ccee6aca929febad2b0b5fbeae1e"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.10'",
-            "version": "==1.43.58"
+            "version": "==1.43.83"
         },
         "botocore": {
             "hashes": [
-                "sha256:76de153de1ba3e242b2e6df6a13ab8a3fb35d17db562462969e661457b63166e",
-                "sha256:94efc419c9f0f41dc2415e4b6b62f04ae21b3ce3930fac47214c4d3f361ea8b8"
+                "sha256:685510e5f4c0f321806c815a60f121a176c0969665f053c4a336209cbe62b1d5",
+                "sha256:8fc0a3c56078c629320b021edadf7a45d289eea21a4988ada6a02277e5bbbdc0"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.10'",
-            "version": "==1.43.62"
+            "version": "==1.43.85"
         },
         "coverage": {
             "extras": [
